@@ -1,20 +1,27 @@
+
 {
-  "background_color": "#ffffff",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "Unit And Materials Costing",
+  "id": "./",
+  "name": "BREB Unit Material Estimator",
   "short_name": "Costing App",
+  "description": "Unit And Materials Costing for PBS2 / BREB.",
+  "lang": "bn",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
   "orientation": "any",
-  "scope": "/Unit-Wise-Material-Converter/",
-  "start_url": "/Unit-Wise-Material-Converter/",
+  "background_color": "#ffffff",
   "theme_color": "#f4f4f4",
-  "id": "UnitAndMaterialsCostingApp",
-  "description": "Unit And Materials Costing for PPBS2 / BREB.",
-  "lang": "en",
   "icons": [
     {
-      "src": "App icon 192p 192p",
+      "src": "./icon-192.png",
       "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
