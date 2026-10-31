@@ -39,14 +39,14 @@
   "screenshots": [
     {
       "src": "./image/screenshot-1.png",
-      "sizes": "1080x1920",
+      "sizes": "720×1080",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Unit selection and material estimation"
     },
     {
       "src": "./image/screenshot-2.png",
-      "sizes": "1080x1920",
+      "sizes": "720×1080",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Material list and cost summary"
