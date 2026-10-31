@@ -5,15 +5,15 @@
   "name": "Unit And Materials Costing",
   "short_name": "Costing App",
   "orientation": "any",
-  "scope": "/Unit-And-Materials-Costing/",
-  "start_url": "/Unit-And-Materials-Costing/",
+  "scope": "/Unit-Wise-Material-Converter/",
+  "start_url": "/Unit-Wise-Material-Converter/",
   "theme_color": "#f4f4f4",
   "id": "UnitAndMaterialsCostingApp",
   "description": "Unit And Materials Costing for PPBS2 / BREB.",
   "lang": "en",
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
