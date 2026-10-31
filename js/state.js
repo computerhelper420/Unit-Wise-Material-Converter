@@ -1,0 +1,4 @@
+const state = {
+  selectedUnits: {},
+  searchQuery: ''
+};
