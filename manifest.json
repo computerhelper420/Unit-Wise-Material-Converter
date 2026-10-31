@@ -1,0 +1,21 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Unit And Materials Costing",
+  "short_name": "Costing App",
+  "orientation": "any",
+  "scope": "/Unit-And-Materials-Costing/",
+  "start_url": "/Unit-And-Materials-Costing/",
+  "theme_color": "#f4f4f4",
+  "id": "UnitAndMaterialsCostingApp",
+  "description": "Unit And Materials Costing for PPBS2 / BREB.",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
