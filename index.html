@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BREB Unit Material Estimator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen text-slate-800 antialiased p-4 md:p-8">
+
+  <div class="max-w-7xl mx-auto space-y-6">
+    
+    <header class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900 tracking-tight">⚡ BREB একক মালামাল অনুমানক (Single Phase)</h1>
+        <p class="text-slate-500 text-sm mt-1">ইউনিট কোড অনুযায়ী মালামাল ও মোট খরচের হিসাব তৈরি করুন</p>
+      </div>
+      <div class="flex items-center space-x-2 no-print">
+        <button id="btn-export-csv" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-4 py-2 rounded-xl text-sm transition shadow-sm flex items-center gap-1.5">
+          <span>📥 CSV ডাউনলোড</span>
+        </button>
+        <button id="btn-print" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-xl text-sm transition shadow-sm flex items-center gap-1.5">
+          <span>🖨️ প্রিন্ট / PDF</span>
+        </button>
+        <button id="btn-clear-all" class="bg-rose-50 hover:bg-rose-100 text-rose-600 font-medium px-3 py-2 rounded-xl text-sm transition border border-rose-200">
+          রিসেট
+        </button>
+      </div>
+    </header>
+
+    <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 space-y-4 no-print">
+      <form id="add-unit-form" class="flex flex-wrap items-end gap-3">
+        <div class="flex-1 min-w-[200px]">
+          <label for="unit-select" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">ইউনিট নির্বাচন করুন</label>
+          <select id="unit-select" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl p-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </select>
+        </div>
+
+        <div class="w-28">
+          <label for="unit-qty-input" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">পরিমাণ</label>
+          <input type="number" id="unit-qty-input" min="1" value="1" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl p-2.5 text-center font-semibold focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-medium px-5 py-2.5 rounded-xl text-sm transition shadow">
+          + ইউনিট যোগ করুন
+        </button>
+      </form>
+
+      <div class="pt-2">
+        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">নির্বাচিত ইউনিটসমূহ:</div>
+        <div id="selected-units-container" class="flex flex-wrap gap-2">
+        </div>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase text-slate-500 tracking-wider">মোট আইটেম</p>
+          <p id="stat-unique-items" class="text-2xl font-bold text-slate-800 mt-1">0</p>
+        </div>
+        <div class="p-3 bg-blue-50 text-blue-600 rounded-xl text-xl">📦</div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase text-slate-500 tracking-wider">মোট মালামালের পরিমাণ</p>
+          <p id="stat-total-qty" class="text-2xl font-bold text-slate-800 mt-1">0</p>
+        </div>
+        <div class="p-3 bg-amber-50 text-amber-600 rounded-xl text-xl">🔢</div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase text-slate-500 tracking-wider">আনুমানিক মোট মূল্য</p>
+          <p id="stat-grand-total" class="text-2xl font-bold text-emerald-600 mt-1">৳ 0.00</p>
+        </div>
+        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl text-xl">💰</div>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+      <div class="p-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center no-print">
+        <h2 class="font-bold text-slate-800 text-base">মালামালের তালিকা</h2>
+        <input type="text" id="table-search-input" placeholder="আইটেম বা বিবরণ খুঁজুন..." 
+               class="w-64 bg-white border border-slate-300 text-xs rounded-xl px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-slate-600">
+          <thead class="bg-slate-100 text-slate-700 uppercase text-xs font-semibold tracking-wider">
+            <tr>
+              <th class="px-4 py-3">আইটেম কোড</th>
+              <th class="px-4 py-3">বিবরণ</th>
+              <th class="px-4 py-3 text-center">ইউনিট প্রতি হিসাব</th>
+              <th class="px-4 py-3 text-right">মোট পরিমাণ</th>
+              <th class="px-4 py-3 text-right">একক মূল্য (৳)</th>
+              <th class="px-4 py-3 text-right">মোট মূল্য (৳)</th>
+            </tr>
+          </thead>
+          <tbody id="materials-table-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/manual.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/controls.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
