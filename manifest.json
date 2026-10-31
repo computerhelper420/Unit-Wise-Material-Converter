@@ -11,11 +11,7 @@
   "orientation": "any",
   "background_color": "#ffffff",
   "theme_color": "#f4f4f4",
-  "categories": [
-    "business",
-    "productivity",
-    "utilities"
-  ],
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
     {
       "src": "./image/icon-192.png",
@@ -34,22 +30,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "./image/screenshot-1.png",
-      "sizes": "720×1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Unit selection and material estimation"
-    },
-    {
-      "src": "./image/screenshot-2.png",
-      "sizes": "720×1080",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Material list and cost summary"
     }
   ]
 }
